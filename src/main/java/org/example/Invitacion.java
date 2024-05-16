@@ -26,7 +26,7 @@ public class Invitacion {
     public Reunion getReunion(){
         return reunion;
     }
-
+ //
     @Override
     public String toString() {
         return "Invitacion{" +
