@@ -17,11 +17,9 @@ public class Departamento implements Invitable {
     /**
      * Constructor que inicializa un departamento con un número de empleados y un nombre.
      *
-     * @param num  El número inicial de empleados en el departamento.
      * @param name El nombre de la organización a la que pertenece el departamento.
      */
-    public Departamento(int num, String name) {
-        numEmpleados = num;
+    public Departamento(String name) {
         empleados = new ArrayList<>();
         nombreOrganizacion = name;
     }
@@ -33,10 +31,10 @@ public class Departamento implements Invitable {
      * @return La cantidad de empleados en el departamento.
      */
     public int ObtenerCantEmpleados() {
-        for (Empleado empleado : empleados) {
-            System.out.println(empleado.toString());
-        }
-        return numEmpleados;
+        //for (Empleado empleado : empleados) {
+        //    System.out.println(empleado.toString());
+        //}
+        return empleados.size();
     }
 
     /**
@@ -51,7 +49,6 @@ public class Departamento implements Invitable {
             return false;
         } else {
             empleados.add(empleado);
-            numEmpleados++;
             return true;
         }
     }
@@ -66,16 +63,16 @@ public class Departamento implements Invitable {
     }
 
     /**
-     * Devuelve el primer empleado de la lista de empleados como organizador de la reunión.
+     * Devuelve el empleado solicitado de la lista de empleados como organizador de la reunión.
      * Si no hay empleados, devuelve null.
      *
      * @return El empleado organizador de la reunión, o null si no hay empleados.
      */
-    public Empleado OrganizadorReu() {
-        if (!empleados.isEmpty()) {
-            return empleados.get(0);
+    public Empleado OrganizadorReu(int cual_empleado) {
+        if (cual_empleado >= 0 && cual_empleado < empleados.size()) {
+            return empleados.get(cual_empleado);
         } else {
-            // Manejar el caso en el que no hay empleados en el departamento
+            // Manejar el caso en el que el índice es inválido
             return null;
         }
     }
