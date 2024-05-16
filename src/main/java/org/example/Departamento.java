@@ -31,7 +31,12 @@ public class Departamento implements Invitable {
     }
 
     public Empleado OrganizadorReu() {
-        return empleados.getFirst();
+        if (!empleados.isEmpty()) {
+            return empleados.get(0);
+        } else {
+            // Manejar el caso en el que no hay empleados en el departamento
+            return null;
+        }
     }
 
     public List<Empleado> getEmpleados(){
