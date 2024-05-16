@@ -1,30 +1,108 @@
 package org.example;
 
+/**
+ * La clase Empleado representa un empleado con un ID, apellidos, nombre y correo electrónico.
+ */
 public class Empleado {
 
     private String id;
     private String apellidos;
     private String nombre;
     private String correo;
-    public Empleado(String id, String apellidos, String nombre, String correo){
+
+    /**
+     * Constructor que inicializa un empleado con el ID, apellidos, nombre y correo electrónico.
+     *
+     * @param id        El ID del empleado.
+     * @param apellidos Los apellidos del empleado.
+     * @param nombre    El nombre del empleado.
+     * @param correo    El correo electrónico del empleado.
+     */
+    public Empleado(String id, String apellidos, String nombre, String correo) {
         this.id = id;
         this.apellidos = apellidos;
         this.nombre = nombre;
         this.correo = correo;
     }
 
-    // Getters y Setters
-    public String getId() {return id;}
-    public String getApellidos() {return apellidos;}
-    public String getNombre() {return nombre;}
-    public String getCorreo() {return correo;}
+    /**
+     * Devuelve el ID del empleado.
+     *
+     * @return El ID del empleado.
+     */
+    public String getId() {
+        return id;
+    }
 
-    public void setId(String id) {this.id = id;}
-    public void setApellidos(String apellidos) {this.apellidos = apellidos;}
-    public void setNombre(String nombre) {this.nombre = nombre;}
-    public void setCorreo(String correo) {this.correo = correo;}
+    /**
+     * Devuelve los apellidos del empleado.
+     *
+     * @return Los apellidos del empleado.
+     */
+    public String getApellidos() {
+        return apellidos;
+    }
 
-    // Método para representar el objeto como String
+    /**
+     * Devuelve el nombre del empleado.
+     *
+     * @return El nombre del empleado.
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * Devuelve el correo electrónico del empleado.
+     *
+     * @return El correo electrónico del empleado.
+     */
+    public String getCorreo() {
+        return correo;
+    }
+
+    /**
+     * Establece el ID del empleado.
+     *
+     * @param id El nuevo ID del empleado.
+     */
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    /**
+     * Establece los apellidos del empleado.
+     *
+     * @param apellidos Los nuevos apellidos del empleado.
+     */
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    /**
+     * Establece el nombre del empleado.
+     *
+     * @param nombre El nuevo nombre del empleado.
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    /**
+     * Establece el correo electrónico del empleado.
+     *
+     * @param correo El nuevo correo electrónico del empleado.
+     */
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    /**
+     * Devuelve una representación en formato de cadena del empleado,
+     * incluyendo su ID, apellidos, nombre y correo electrónico.
+     *
+     * @return Una cadena que representa al empleado.
+     */
     @Override
     public String toString() {
         return "Empleado{" +
@@ -35,4 +113,5 @@ public class Empleado {
                 '}';
     }
 }
+
 
