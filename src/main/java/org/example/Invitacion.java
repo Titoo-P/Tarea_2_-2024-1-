@@ -3,10 +3,15 @@ package org.example;
 import java.time.Instant;
 
 public class Invitacion {
-    private Instant hora;
+    private final Instant hora;
+    private final Invitable invitado;
+    private final Reunion reunion;
 
-    public Invitacion(Instant hora) {
-        this.hora = hora;
+
+    public Invitacion(Reunion reunion, Invitable invitado) {
+        this.reunion = reunion;
+        this.invitado = invitado;
+        this.hora = reunion.getHoraPrevista();
     }
 
     // Getter y Setter
@@ -14,8 +19,12 @@ public class Invitacion {
         return hora;
     }
 
-    public void setHora(Instant hora) {
-        this.hora = hora;
+    public Invitable getInvitado(){
+        return invitado;
+    }
+
+    public Reunion getReunion(){
+        return reunion;
     }
 
     @Override
