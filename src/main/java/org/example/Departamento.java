@@ -1,15 +1,13 @@
 package org.example;
 
-import org.example.Reunion.*;
+import java.time.Instant;
 import java.util.*;
 
 public class Departamento implements Invitable {
 
-    private String nombre;
     private ArrayList<Empleado> empleados;
-    private ArrayList<Reunion> EmpReuniones; // Lista de reuniones a las que asisten los empleados del departamento
     private int numEmpleados;
-    private String organizacion;
+    private String nombreOrganizacion;
 
     public int ObtenerCantEmpleados() {
         for (Empleado empleado : empleados) {
@@ -28,18 +26,21 @@ public class Departamento implements Invitable {
         }
     }
 
-    public void invitar(Reunion reunion, Empleado empleado) {
-
-        reunion.AgregarInvitado(empleado); // crear en Reunion
+    public void invitar(Reunion reunion) {
+        reunion.AgregarInvitado(new Invitacion(reunion,this)); // crear en Reunion
     }
 
-    public void OrganizadorReu() {
-        organizador = empleado.getFirst();
+    public Empleado OrganizadorReu() {
+        return empleados.getFirst();
     }
 
-    public Departamento(int num) {
+    public List<Empleado> getEmpleados(){
+        return empleados;
+    }
+
+    public Departamento(int num, String name) {
         numEmpleados = num;
         empleados = new ArrayList<>();
-        EmpReuniones = new ArrayList<>();
+        nombreOrganizacion = name;
     }
 }
