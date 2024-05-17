@@ -23,52 +23,90 @@ public class Main {
         Empleado empleado2 = new Empleado("002", "Lucas", "Rus", "lucas.rus @empresa.com");
         Empleado empleado3 = new Empleado("003", "Aldo", "Deep", "aldo.deep@empresa.com");
         Empleado empleado4 = new Empleado("004", "Noah", "Balls", "noah.balls@empresa.com");
-        Empleado empleado5 = null;
 
-        agregarEmpleadosDepartamento(Informatica, empleado2,empleado3,empleado4, empleado5, Organizador);
+        agregarEmpleadosDepartamento(Informatica, empleado2,empleado3,empleado4, Organizador);
 
-        // Crear una reunión presencial
-        Date fechaReunion = new Date();
-        Instant horaPrevista = Instant.now().plus(Duration.ofHours(2));
-        Duration duracionPrevista = Duration.ofHours(1);
-        ReunionPresencial reunion = new ReunionPresencial(Organizador, tipoReunion.TECNICA, fechaReunion, horaPrevista, duracionPrevista, "Sala A");
-
-        // Agregar invitados a la reunión
-        reunion.AgregarInvitado(new Invitacion(reunion, Organizador));
-        reunion.AgregarInvitado(new Invitacion(reunion, empleado2));
-        reunion.AgregarInvitado(new Invitacion(reunion, empleado3));
-        reunion.AgregarInvitado(new Invitacion(reunion, empleado4));
-
+        //***************************************************//
+        // *****  Ejemplo Crear Reunion presencial ******   //
+        ReunionPresencial reunion1 = crearReunionPresencial(Informatica, tipoReunion.TECNICA, Organizador, "Sala 01",empleado2, empleado3, empleado4);
         // Crear lista de asistencias e iniciar la reunión
         List<Asistencia> asistencias = new ArrayList<>();
         asistencias.add(new Asistencia(Organizador, Instant.now()));
         asistencias.add(new Asistencia(empleado2, Instant.now()));
-        reunion.iniciar(asistencias);
-
+        reunion1.iniciar(asistencias);
         // Simular el tiempo
         Tiempo.esperarSegundos(2);
-
         // Agregar empleados atrasados
-        reunion.AgregarAtrasados(empleado3);
-
+        reunion1.AgregarAtrasados(empleado3);
         // Notas tomadas por la reunion
         Nota nota = new Nota("Pepito debe ser despedido.");
-        reunion.AgregarNota(nota);
-
-        //simula un poco detiempo para tomar nota
+        reunion1.AgregarNota(nota);
+        //simula que paso un poco de tiempo para tomar nota
         Tiempo.esperarSegundos(2);
-
-
-
         // Finalizar la reunión
-        reunion.terminar();
-        guardarInformeReunion(reunion);
+        reunion1.terminar();
+        guardarInformeReunion(reunion1);
+        //****************************************************//
 
 
-
-
+        //***************************************************//
+        // *****  Ejemplo Crear Reunion Virtual ******   //
+        ReunionVirtual reunion2 = crearReunionVirtual(Informatica, tipoReunion.TECNICA, Organizador, "https//televisio.cl",empleado2, empleado3, empleado4);
+        // Crear lista de asistencias e iniciar la reunión
+        asistencias = new ArrayList<>();
+        asistencias.add(new Asistencia(Organizador, Instant.now()));
+        asistencias.add(new Asistencia(empleado2, Instant.now()));
+        reunion2.iniciar(asistencias);
+        // Simular el tiempo
+        Tiempo.esperarSegundos(2);
+        // Agregar empleados atrasados
+        reunion1.AgregarAtrasados(empleado3);
+        // Notas tomadas por la reunion
+        nota = new Nota("Pepito debe ser despedido.");
+        reunion2.AgregarNota(nota);
+        //simula que paso un poco de tiempo para tomar nota
+        Tiempo.esperarSegundos(2);
+        // Finalizar la reunión
+        reunion2.terminar();
+        guardarInformeReunion(reunion2);
+        //****************************************************//
 
     }
+
+
+
+
+    private static ReunionPresencial crearReunionPresencial(Departamento departamento,tipoReunion tipodeReunion, Empleado organizador,String sala, Empleado... invitados) {
+        Date fechaReunion = new Date();
+        Instant horaPrevista = Instant.now().plus(Duration.ofHours(2));
+        Duration duracionPrevista = Duration.ofHours(1);
+        ReunionPresencial reunion = new ReunionPresencial(organizador, tipodeReunion, fechaReunion, horaPrevista, duracionPrevista, sala);
+
+        // Agregar invitados a la reunión
+        for (Empleado invitado : invitados) {
+            if (invitado != null) {
+                reunion.AgregarInvitado(new Invitacion(reunion, invitado));
+            }
+        }
+
+        return reunion;
+    }
+    private static ReunionVirtual crearReunionVirtual(Departamento departamento,tipoReunion tipodeReunion, Empleado organizador,String enlace, Empleado... invitados) {
+        Date fechaReunion = new Date();
+        Instant horaPrevista = Instant.now().plus(Duration.ofHours(2));
+        Duration duracionPrevista = Duration.ofHours(1);
+        ReunionVirtual reunion = new ReunionVirtual(organizador, tipodeReunion, fechaReunion, horaPrevista, duracionPrevista, enlace);
+
+        // Agregar invitados a la reunión
+        for (Empleado invitado : invitados) {
+            if (invitado != null) {
+                reunion.AgregarInvitado(new Invitacion(reunion, invitado));
+            }
+        }
+
+        return reunion;
+    }
+
 
     private static void agregarEmpleadosDepartamento(Departamento departamento, Empleado... empleados) {
         try {

@@ -8,7 +8,7 @@ public class ReunionVirtual extends Reunion{
 
     private String enlace;
 
-    public ReunionVirtual(Empleado empleado, tipoReunion tipo, Date fecha, Duration duracionPrevista, Instant horaPrevista, String enlace){
+    public ReunionVirtual(Empleado empleado, tipoReunion tipo, Date fecha, Instant horaPrevista,Duration duracionPrevista, String enlace){
         super(empleado, tipo, fecha, horaPrevista, duracionPrevista);
         this.enlace = enlace;
     }
