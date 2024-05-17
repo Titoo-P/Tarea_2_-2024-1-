@@ -18,7 +18,7 @@ public class Empleado implements Invitable {
      * @param nombre    El nombre del empleado.
      * @param correo    El correo electrónico del empleado.
      */
-    public Empleado(String id, String apellidos, String nombre, String correo) {
+    public Empleado(String id, String nombre, String apellidos, String correo) {
         this.id = id;
         this.apellidos = apellidos;
         this.nombre = nombre;

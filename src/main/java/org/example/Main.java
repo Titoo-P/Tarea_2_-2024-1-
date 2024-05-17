@@ -10,7 +10,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class Main {
+
+
     public static void main(String[] args) {
+
         System.out.println();
 
         Departamento Informatica = new Departamento("Informatica");
@@ -53,11 +56,22 @@ public class Main {
         asistencias.add(new Asistencia(empleado2, Instant.now()));
         reunion.iniciar(asistencias);
 
+        // Simular el tiempo (copie esto en internet)
+        Instant start = Instant.now();
+        while (Duration.between(start, Instant.now()).getSeconds() < 2) {
+            // Busy-wait loop to simulate a delay
+        }
+
         // Agregar empleados atrasados
         reunion.AgregarAtrasados(empleado3);
 
         // Notas tomadas por la reunion
         Nota nota = new Nota("Pepito debe ser despedido.");
+        //simula un poco detiempo para tomar nota
+        start = Instant.now();
+        while (Duration.between(start, Instant.now()).getSeconds() < 2) {
+            // Busy-wait loop to simulate a delay
+        }
         reunion.AgregarNota(nota);
 
         // Finalizar la reunión
@@ -82,9 +96,10 @@ public class Main {
             System.out.println("- " + a.getEmpleado().getNombre());
         }
 
+        int contadorReuniones = 1;
         //Crear el informe en un .txt
-
-        try (FileWriter writer = new FileWriter("informe_reunion.txt")) {
+        String nombreArchivo = "informe_reunion" + contadorReuniones + ".txt";
+        try (FileWriter writer = new FileWriter(nombreArchivo)) {
             writer.write("Organizador de la reunión: " + reunion.getOrganizador().getNombre() + "\n");
             writer.write("Hora de inicio: " + reunion.getHorarioInicio() + "\n");
             writer.write("Hora de finalización: " + reunion.getHorarioFinal() + "\n");
