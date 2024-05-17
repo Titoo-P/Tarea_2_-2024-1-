@@ -11,10 +11,9 @@ import java.io.IOException;
 
 public class Main {
 
+    private static int contadorReuniones = 1;
 
     public static void main(String[] args) {
-
-        System.out.println();
 
         Departamento Informatica = new Departamento("Informatica");
         Departamento Marketing = new Departamento("Marketing");
@@ -26,17 +25,7 @@ public class Main {
         Empleado empleado4 = new Empleado("004", "Noah", "Balls", "noah.balls@empresa.com");
         Empleado empleado5 = null;
 
-        try {
-            Informatica.AgregarEmpleado(Organizador);
-            Informatica.AgregarEmpleado(empleado2);
-            Informatica.AgregarEmpleado(empleado5);
-        } catch (EmpleadoYaExisteException | EmpleadoNullException e) {
-            System.out.println(e.getMessage());
-        }
-
-        System.out.println();
-        System.out.println();
-        System.out.println();
+        agregarEmpleadosDepartamento(Informatica, empleado2,empleado3,empleado4, empleado5, Organizador);
 
         // Crear una reunión presencial
         Date fechaReunion = new Date();
@@ -56,48 +45,44 @@ public class Main {
         asistencias.add(new Asistencia(empleado2, Instant.now()));
         reunion.iniciar(asistencias);
 
-        // Simular el tiempo (copie esto en internet)
-        Instant start = Instant.now();
-        while (Duration.between(start, Instant.now()).getSeconds() < 2) {
-            // Busy-wait loop to simulate a delay
-        }
+        // Simular el tiempo
+        Tiempo.esperarSegundos(2);
 
         // Agregar empleados atrasados
         reunion.AgregarAtrasados(empleado3);
 
         // Notas tomadas por la reunion
         Nota nota = new Nota("Pepito debe ser despedido.");
-        //simula un poco detiempo para tomar nota
-        start = Instant.now();
-        while (Duration.between(start, Instant.now()).getSeconds() < 2) {
-            // Busy-wait loop to simulate a delay
-        }
         reunion.AgregarNota(nota);
+
+        //simula un poco detiempo para tomar nota
+        Tiempo.esperarSegundos(2);
+
+
 
         // Finalizar la reunión
         reunion.terminar();
+        guardarInformeReunion(reunion);
 
-        System.out.println("Organizador de la reunión: " + reunion.getOrganizador().getNombre());
-        System.out.println("Hora de inicio: " + reunion.getHorarioInicio());
-        System.out.println("Hora de finalización: " + reunion.getHorarioFinal());
-        System.out.println("Duración real: " + reunion.tiempoReal() + " segundos");
-        System.out.println("Asistencias totales: " + reunion.AsistenciaTotal());
-        System.out.println("Porcentaje de asistencia: " + reunion.AsistenciaPorcentaje() + "%");
-        System.out.println("Notas de la reunión: ");
-        for (Nota n : reunion.getNotas()) {
-            System.out.println("- " + n.getContenido());
-        }
-        System.out.println("Empleados ausentes: ");
-        for (Empleado e : reunion.obtenerAusencias()) {
-            System.out.println("- " + e.getNombre());
-        }
-        System.out.println("Empleados atrasados: ");
-        for (Asistencia a : reunion.obtenerRetrasos()) {
-            System.out.println("- " + a.getEmpleado().getNombre());
-        }
 
-        int contadorReuniones = 1;
-        //Crear el informe en un .txt
+
+
+
+    }
+
+    private static void agregarEmpleadosDepartamento(Departamento departamento, Empleado... empleados) {
+        try {
+            for (Empleado empleado : empleados) {
+                if (empleado != null) {
+                    departamento.AgregarEmpleado(empleado);
+                }
+            }
+        } catch (EmpleadoYaExisteException | EmpleadoNullException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private static void guardarInformeReunion(Reunion reunion) {
         String nombreArchivo = "informe_reunion" + contadorReuniones + ".txt";
         try (FileWriter writer = new FileWriter(nombreArchivo)) {
             writer.write("Organizador de la reunión: " + reunion.getOrganizador().getNombre() + "\n");
@@ -121,22 +106,15 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        contadorReuniones++;
+    }
 
-
-
-
-
-
-
-
-        //System.out.println(Informatica.getEmpleados());
-        //System.out.println(Informatica.ObtenerCantEmpleados());
-        //System.out.println("Organizador: "+Informatica.OrganizadorReu(1));
-
-        //ReunionPresencial Reunion1 = new ReunionPresencial(empleado1,"MARKETING",15)
-
-        // Imprimir los detalles del empleado
-        //System.out.println(empleado1);
-
+    public class Tiempo {
+        public static void esperarSegundos(int segundos) {
+            Instant start = Instant.now();
+            while (Duration.between(start, Instant.now()).getSeconds() < segundos) {
+                // Busy-wait loop to simulate a delay
+            }
+        }
     }
 }

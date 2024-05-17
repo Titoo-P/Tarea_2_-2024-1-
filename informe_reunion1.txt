@@ -1,0 +1,12 @@
+Organizador de la reunión: Pato
+Hora de inicio: 2024-05-17T16:01:07.773150900Z
+Hora de finalización: 2024-05-17T16:01:11.774328400Z
+Duración real: 4.0 segundos
+Asistencias totales: 3
+Porcentaje de asistencia: 75.0%
+Notas de la reunión: 
+- Pepito debe ser despedido.
+Empleados ausentes: 
+- Noah
+Empleados atrasados: 
+- Aldo
