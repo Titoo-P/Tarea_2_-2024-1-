@@ -28,7 +28,7 @@ class TestInvitacion {
         sala = "1";
         hora = horaPrevista;
 
-        reunion = new ReunionVirtual(empleado, tipoReunion.MARKETING, fecha, duracionPrevista, horaPrevista, sala);
+        reunion = new ReunionVirtual(empleado, tipoReunion.MARKETING, fecha, horaPrevista, duracionPrevista,  sala);
         departamento = new Departamento("Microsoft");
         invitacion = new Invitacion(reunion, departamento);
     }
