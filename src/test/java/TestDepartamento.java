@@ -69,7 +69,7 @@ class TestDepartamento {
     @Test
     void testInvitar() {
         // Crear una nueva reunión
-        Reunion reunion = new Reunion(empleado1, tipoReunion.MARKETING, fecha, horaPrevista, duracionPrevista);
+        Reunion reunion = new Reunion(empleado1, tipoReunion.MARKETING, fecha, horaPrevista, duracionPrevista,"SALA 01");
 
         // Invitar al empleado2 a la reunión
         departamento.invitar(reunion);
