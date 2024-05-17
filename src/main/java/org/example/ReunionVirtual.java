@@ -13,6 +13,10 @@ public class ReunionVirtual extends Reunion{
         this.enlace = enlace;
     }
 
+    public String getEnlace(){
+        return enlace;
+    }
+
     @Override
     public String toString(){
         return super.toString() + "de tipo Virtual";

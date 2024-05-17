@@ -19,6 +19,6 @@ public class ReunionPresencial extends Reunion{
 
     @Override
     public String toString(){
-        return  super.toString() + "de tipo Presencial";
+        return  super.toString() + " de tipo Presencial";
     }
 }
