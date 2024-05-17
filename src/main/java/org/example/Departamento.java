@@ -41,10 +41,11 @@ public class Departamento implements Invitable {
 
     /**
      * Agrega un empleado al departamento.
-     * Si el empleado ya existe en el departamento, no lo agrega.
      *
      * @param empleado El empleado que se desea agregar.
      * @return true si el empleado se agregó exitosamente, false si ya existe.
+     * @throws EmpleadoYaExisteException Si el empleado ya existe en el departamento.
+     * @throws EmpleadoNullException     Si el empleado pasado es null.
      */
     public boolean AgregarEmpleado(Empleado empleado) throws EmpleadoYaExisteException, EmpleadoNullException{
         if (empleado == null) {
