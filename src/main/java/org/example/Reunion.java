@@ -11,6 +11,7 @@ public class Reunion {
     private final Date fecha;
     private final Instant horaPrevista;
     private final Duration duracionPrevista;
+    private String direccion;
     private Instant HorarioInicio;
     private Instant HorarioFinal;
     private List<Invitacion> invitaciones;
@@ -22,8 +23,9 @@ public class Reunion {
 
     //constructor con los atributos de la clase
 
-    public Reunion(Empleado organizador, tipoReunion tipo, Date fecha, Instant horaPrevista, Duration duracionPrevista){
+    public Reunion(Empleado organizador, tipoReunion tipo, Date fecha, Instant horaPrevista, Duration duracionPrevista, String direccion){
         this.organizador = organizador;
+        this.direccion = direccion;
         this.fecha = fecha;
         this.horaPrevista = horaPrevista;
         this.duracionPrevista = duracionPrevista;
@@ -125,6 +127,10 @@ public class Reunion {
 
     public Instant getHorarioFinal() {
         return HorarioFinal;
+    }
+
+    public String getDireccion() {
+        return direccion;
     }
 
     public Duration getDuracionPrevista(){

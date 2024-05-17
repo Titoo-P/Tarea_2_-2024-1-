@@ -9,7 +9,7 @@ public class ReunionPresencial extends Reunion{
     private String sala;
 
     public ReunionPresencial(Empleado empleado, tipoReunion tipo, Date fecha, Instant horaPrevista, Duration duracionPrevista, String sala){
-        super(empleado, tipo, fecha, horaPrevista, duracionPrevista);
+        super(empleado, tipo, fecha, horaPrevista, duracionPrevista, sala);
         this.sala = sala;
     }
 

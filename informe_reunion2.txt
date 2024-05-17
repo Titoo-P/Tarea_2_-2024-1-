@@ -1,6 +1,7 @@
 Organizador de la reunión: Pato
-Hora de inicio: 2024-05-17T16:54:41.063961500Z
-Hora de finalización: 2024-05-17T16:54:45.065078200Z
+Hora de inicio: 2024-05-17T17:02:49.854919600Z
+Hora de finalización: 2024-05-17T17:02:53.857507600Z
+Direccion de Reunion: https//televisio.cl
 Duración real: 4.0 segundos
 Asistencias totales: 2
 Porcentaje de asistencia: 50.0%

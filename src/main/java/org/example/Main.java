@@ -126,6 +126,7 @@ public class Main {
             writer.write("Organizador de la reunión: " + reunion.getOrganizador().getNombre() + "\n");
             writer.write("Hora de inicio: " + reunion.getHorarioInicio() + "\n");
             writer.write("Hora de finalización: " + reunion.getHorarioFinal() + "\n");
+            writer.write("Direccion de Reunion: " + reunion.getDireccion() + "\n");
             writer.write("Duración real: " + reunion.tiempoReal() + " segundos\n");
             writer.write("Asistencias totales: " + reunion.AsistenciaTotal() + "\n");
             writer.write("Porcentaje de asistencia: " + reunion.AsistenciaPorcentaje() + "%\n");

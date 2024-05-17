@@ -1,6 +1,7 @@
 Organizador de la reunión: Pato
-Hora de inicio: 2024-05-17T16:54:37.044920Z
-Hora de finalización: 2024-05-17T16:54:41.053988100Z
+Hora de inicio: 2024-05-17T17:02:45.841807200Z
+Hora de finalización: 2024-05-17T17:02:49.844943900Z
+Direccion de Reunion: Sala 01
 Duración real: 4.0 segundos
 Asistencias totales: 3
 Porcentaje de asistencia: 75.0%
