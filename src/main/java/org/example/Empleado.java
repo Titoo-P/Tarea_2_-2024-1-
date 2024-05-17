@@ -3,7 +3,7 @@ package org.example;
 /**
  * La clase Empleado representa un empleado con un ID, apellidos, nombre y correo electrónico.
  */
-public class Empleado {
+public class Empleado implements Invitable {
 
     private String id;
     private String apellidos;
@@ -103,6 +103,11 @@ public class Empleado {
      *
      * @return Una cadena que representa al empleado.
      */
+
+    public void invitar(Reunion reunion) {
+        System.out.println(nombre + "Has sido invitado a una reunión el " + reunion.getFecha() + " a las " + reunion.getHoraPrevista() + ".");
+    }
+
     @Override
     public String toString() {
         return "Empleado{" +
