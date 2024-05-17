@@ -5,7 +5,7 @@ public class Retraso extends Asistencia {
     private Instant hora;
 
     public Retraso(Empleado empleado,Instant hora) {
-        super(empleado);
+        super(empleado, hora);
         this.hora = hora;
     }
 
