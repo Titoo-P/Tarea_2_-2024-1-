@@ -1,5 +1,12 @@
 package org.example;
 import org.example.Excepciones.*;
+
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.Date;
+import java.time.Duration;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
         System.out.println();
@@ -8,27 +15,83 @@ public class Main {
         Departamento Marketing = new Departamento("Marketing");
         Departamento Finanzas = new Departamento("Finanzas");
 
-        Empleado empleado1 = new Empleado("001", "Pato", "Pta", "pato.pta@empresa.com");
+        Empleado Organizador = new Empleado("001", "Pato", "Piñera", "pato.pta@empresa.com");
         Empleado empleado2 = new Empleado("002", "Lucas", "Rus", "lucas.rus @empresa.com");
         Empleado empleado3 = new Empleado("003", "Aldo", "Deep", "aldo.deep@empresa.com");
-        Empleado empleado3_null = null;
         Empleado empleado4 = new Empleado("004", "Noah", "Balls", "noah.balls@empresa.com");
-        Empleado empleado5 = new Empleado("005", "Spawn", "Lol", "spawn.lol@empresa.com");
-        Empleado empleado6 = new Empleado("006", "Pepito", "Elsa", "pepito.elsa@empresa.com");
-        Empleado empleado7 = new Empleado("007", "Juanito", "Sapato", "juanito.sapato@empresa.com");
+        Empleado empleado5 = null;
 
         try {
-            Informatica.AgregarEmpleado(empleado1);
+            Informatica.AgregarEmpleado(Organizador);
             Informatica.AgregarEmpleado(empleado2);
-            Informatica.AgregarEmpleado(empleado3_null);
+            Informatica.AgregarEmpleado(empleado5);
         } catch (EmpleadoYaExisteException | EmpleadoNullException e) {
             System.out.println(e.getMessage());
         }
 
-        System.out.println(Informatica.getEmpleados());
-        System.out.println(Informatica.ObtenerCantEmpleados());
-        System.out.println("Organizador: "+Informatica.OrganizadorReu(1));
+        System.out.println();
+        System.out.println();
+        System.out.println();
 
+        // Crear una reunión presencial
+        Date fechaReunion = new Date();
+        Instant horaPrevista = Instant.now().plus(Duration.ofHours(2));
+        Duration duracionPrevista = Duration.ofHours(1);
+        ReunionPresencial reunion = new ReunionPresencial(Organizador, tipoReunion.TECNICA, fechaReunion, horaPrevista, duracionPrevista, "Sala A");
+
+        // Agregar invitados a la reunión
+        reunion.AgregarInvitado(new Invitacion(reunion, Organizador));
+        reunion.AgregarInvitado(new Invitacion(reunion, empleado2));
+        reunion.AgregarInvitado(new Invitacion(reunion, empleado3));
+        reunion.AgregarInvitado(new Invitacion(reunion, empleado4));
+
+        // Crear lista de asistencias e iniciar la reunión
+        List<Asistencia> asistencias = new ArrayList<>();
+        asistencias.add(new Asistencia(Organizador, Instant.now()));
+        asistencias.add(new Asistencia(empleado2, Instant.now()));
+        reunion.iniciar(asistencias);
+
+        // Agregar empleados atrasados
+        reunion.AgregarAtrasados(empleado3);
+
+        // Notas tomadas por la reunion
+        Nota nota = new Nota("Pepito debe ser despedido.");
+        reunion.AgregarNota(nota);
+
+        // Finalizar la reunión
+        reunion.terminar();
+
+        System.out.println("Organizador de la reunión: " + reunion.getOrganizador().getNombre());
+        System.out.println("Hora de inicio: " + reunion.getHorarioInicio());
+        System.out.println("Hora de finalización: " + reunion.getHorarioFinal());
+        System.out.println("Duración real: " + reunion.tiempoReal() + " segundos");
+        System.out.println("Asistencias totales: " + reunion.AsistenciaTotal());
+        System.out.println("Porcentaje de asistencia: " + reunion.AsistenciaPorcentaje() + "%");
+        System.out.println("Notas de la reunión: ");
+        for (Nota n : reunion.getNotas()) {
+            System.out.println("- " + n.getContenido());
+        }
+        System.out.println("Empleados ausentes: ");
+        for (Empleado e : reunion.obtenerAusencias()) {
+            System.out.println("- " + e.getNombre());
+        }
+        System.out.println("Empleados atrasados: ");
+        for (Asistencia a : reunion.obtenerRetrasos()) {
+            System.out.println("- " + a.getEmpleado().getNombre());
+        }
+
+
+
+
+
+
+
+
+        //System.out.println(Informatica.getEmpleados());
+        //System.out.println(Informatica.ObtenerCantEmpleados());
+        //System.out.println("Organizador: "+Informatica.OrganizadorReu(1));
+
+        //ReunionPresencial Reunion1 = new ReunionPresencial(empleado1,"MARKETING",15)
 
         // Imprimir los detalles del empleado
         //System.out.println(empleado1);
