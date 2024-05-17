@@ -57,9 +57,7 @@ public class Invitacion {
      */
     @Override
     public String toString() {
-        return "Invitacion{" +
-                "hora=" + hora +
-                '}';
+        return "Invitacion{" + "hora=" + hora + '}';
     }
 }
 
