@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.Excepciones.*;
+
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.*;
@@ -44,9 +46,11 @@ public class Departamento implements Invitable {
      * @param empleado El empleado que se desea agregar.
      * @return true si el empleado se agregó exitosamente, false si ya existe.
      */
-    public boolean AgregarEmpleado(Empleado empleado) {
-        if (empleados.contains(empleado)) {
-            return false;
+    public boolean AgregarEmpleado(Empleado empleado) throws EmpleadoYaExisteException, EmpleadoNullException{
+        if (empleado == null) {
+            throw new EmpleadoNullException("EmpleadoNullException: El empleado no puede ser null.");
+        } else if (empleados.contains(empleado)) {
+            throw new EmpleadoYaExisteException("EmpleadoYaExisteException: El empleado ya existe en el departamento.");
         } else {
             empleados.add(empleado);
             return true;
