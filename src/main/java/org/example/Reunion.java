@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-abstract public class Reunion {
+public class Reunion {
 
     private final Date fecha;
     private final Instant horaPrevista;
@@ -141,5 +141,9 @@ abstract public class Reunion {
 
     public tipoReunion getTipo(){
         return tipo;
+    }
+
+    public List<Invitacion> getInvitaciones(){
+        return invitaciones;
     }
 }
