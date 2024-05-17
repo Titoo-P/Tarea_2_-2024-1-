@@ -60,7 +60,7 @@ public class Main {
         // Simular el tiempo
         Tiempo.esperarSegundos(2);
         // Agregar empleados atrasados
-        reunion1.AgregarAtrasados(empleado3);
+        reunion2.AgregarAtrasados(empleado3);
         // Notas tomadas por la reunion
         nota = new Nota("Pepito debe ser despedido.");
         reunion2.AgregarNota(nota);
@@ -69,7 +69,12 @@ public class Main {
         // Finalizar la reunión
         reunion2.terminar();
         guardarInformeReunion(reunion2);
-        //****************************************************//
+
+        //*******************************************************//
+        /////**** Ponga sus pruebas debajo de esta linea//////////
+
+
+
 
     }
 
@@ -124,9 +129,10 @@ public class Main {
         String nombreArchivo = "informe_reunion" + contadorReuniones + ".txt";
         try (FileWriter writer = new FileWriter(nombreArchivo)) {
             writer.write("Organizador de la reunión: " + reunion.getOrganizador().getNombre() + "\n");
+            writer.write("Direccion de Reunion: " + reunion.getDireccion() + "\n");
+            writer.write("Tipo de Reunion: " + reunion.getTipo() + "\n");
             writer.write("Hora de inicio: " + reunion.getHorarioInicio() + "\n");
             writer.write("Hora de finalización: " + reunion.getHorarioFinal() + "\n");
-            writer.write("Direccion de Reunion: " + reunion.getDireccion() + "\n");
             writer.write("Duración real: " + reunion.tiempoReal() + " segundos\n");
             writer.write("Asistencias totales: " + reunion.AsistenciaTotal() + "\n");
             writer.write("Porcentaje de asistencia: " + reunion.AsistenciaPorcentaje() + "%\n");
